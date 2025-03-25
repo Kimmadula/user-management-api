@@ -7,24 +7,29 @@ import { User } from "../entities/User";
 const router = Router();
 
 /**
- *  User Creation
- * ------------------------
- * Route: POST /
- * Description: Creates a new user and saves it to the database.
+ * Gijan - User Listing and Retrieval
+ * -------------------------------------
+ * Route: GET /
+ * Description: Lists all users.
  */
-router.post("/", async (req, res) => {
-  try {
-    const userRepo = getRepository(User);
-    const newUser = userRepo.create(req.body);
-    await userRepo.save(newUser);
-    
-    // Respond with only the success message
-    res.status(201).json({ message: "User created successfully!" });
-
-  } catch (error: unknown) { 
-    // Handle and log the error appropriately
-    res.status(500).json({ message: "An error occurred while processing your request." });
-  }
+router.get("/", async (_req, res) => {
+  const userRepo = getRepository(User);
+  const users = await userRepo.find(); // Gets all users
+  res.json(users); // Returns user list
 });
+
+/**
+ * Gijan - Get Single User
+ * --------------------------
+ * Route: GET /:id
+ * Description: Gets a single user by ID.
+ */
+router.get("/:id", async (req, res) => {
+  const userRepo = getRepository(User);
+  const user = await userRepo.findOneBy({ id: parseInt(req.params.id) });
+  if (user) res.json(user); // Found user
+  else res.status(404).json({ message: "User not found" }); // User not found
+});
+
 
 export default router;
