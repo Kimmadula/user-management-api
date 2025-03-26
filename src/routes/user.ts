@@ -5,10 +5,17 @@ import { User } from "../entities/User";
 const router = Router();
 
 /**
+<<<<<<< HEAD
  * Tumakay - User Creation
  * ------------------------
  * Route: POST /
  * Description: Creates a new user and saves it to the database.
+=======
+ * Reyes - User Deletion
+ * ----------------------
+ * Route: DELETE /:id
+ * Description: Deletes a user by ID.
+>>>>>>> ba58c03 (Added user deletion feature)
  */
 router.post("/", async (req, res) => {
   try {
@@ -37,6 +44,7 @@ router.get("/", async (_req, res) => {
   res.json(users); // Returns user list
 });
 
+<<<<<<< HEAD
 /**
  * Get Single User
  * ------------------------
@@ -50,4 +58,6 @@ router.get("/:id", async (req, res) => {
   else res.status(404).json({ message: "User not found" }); // User not found
 });
 
+=======
+>>>>>>> ba58c03 (Added user deletion feature)
 export default router;
