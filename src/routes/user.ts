@@ -1,5 +1,11 @@
+import { Router } from "express";
+import { getRepository } from "typeorm";
+import { User } from "../entities/User";
+
+const router = Router();
+
 /**
- * ❌ Reyes- User Deletion
+ * Reyes - User Deletion
  * ----------------------
  * Route: DELETE /:id
  * Description: Deletes a user by ID.
@@ -9,3 +15,5 @@ router.delete("/:id", async (req, res) => {
   const result = await userRepo.delete(req.params.id); // Deletes user by ID
   res.json(result); // Returns delete result
 });
+
+export default router;
