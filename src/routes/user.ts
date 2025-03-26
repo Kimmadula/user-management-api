@@ -4,6 +4,7 @@ import { User } from "../entities/User";
 
 const router = Router();
 
+
 /**
  * Tumakay - User Creation
  * ------------------------
@@ -24,5 +25,3 @@ router.post("/", async (req, res) => {
     res.status(500).json({ message: "Internal Server Error", error: error instanceof Error ? error.message : "Unknown error" });
   }
 });
-
-export default router;
