@@ -7,7 +7,7 @@ import { User } from "../entities/User";
 const router = Router();
 
 /**
- * 👤 Alice - User Creation
+ * User Creation
  * ------------------------
  * Route: POST /
  * Description: Creates a new user and saves it to the database.
