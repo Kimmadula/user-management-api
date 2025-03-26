@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // src/routes/user.ts
 
 import { Router } from "express";
