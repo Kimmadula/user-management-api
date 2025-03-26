@@ -5,17 +5,10 @@ import { User } from "../entities/User";
 const router = Router();
 
 /**
-<<<<<<< HEAD
  * Tumakay - User Creation
  * ------------------------
  * Route: POST /
  * Description: Creates a new user and saves it to the database.
-=======
- * Reyes - User Deletion
- * ----------------------
- * Route: DELETE /:id
- * Description: Deletes a user by ID.
->>>>>>> ba58c03 (Added user deletion feature)
  */
 router.post("/", async (req, res) => {
   try {
@@ -30,7 +23,19 @@ router.post("/", async (req, res) => {
     console.error("Error creating user:", error);
     res.status(500).json({ message: "Internal Server Error", error: error instanceof Error ? error.message : "Unknown error" });
   }
-});  // 🔴 FIXED: Properly closed router.post()
+});
+
+/**
+ * Reyes - User Deletion
+ * ----------------------
+ * Route: DELETE /:id
+ * Description: Deletes a user by ID.
+ */
+router.delete("/:id", async (req, res) => {
+  const userRepo = getRepository(User);
+  const result = await userRepo.delete(req.params.id); // Deletes user by ID
+  res.json(result); // Returns delete result
+});
 
 /**
  * User Listing
@@ -44,7 +49,6 @@ router.get("/", async (_req, res) => {
   res.json(users); // Returns user list
 });
 
-<<<<<<< HEAD
 /**
  * Get Single User
  * ------------------------
@@ -58,6 +62,4 @@ router.get("/:id", async (req, res) => {
   else res.status(404).json({ message: "User not found" }); // User not found
 });
 
-=======
->>>>>>> ba58c03 (Added user deletion feature)
 export default router;
