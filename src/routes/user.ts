@@ -1,11 +1,3 @@
-// src/routes/user.ts
-
-import { Router } from "express";
-import { getRepository } from "typeorm";
-import { User } from "../entities/User";
-
-const router = Router();
-
 /**
  * Gijan - User Listing and Retrieval
  * -------------------------------------
@@ -30,5 +22,3 @@ router.get("/:id", async (req, res) => {
   if (user) res.json(user); // Found user
   else res.status(404).json({ message: "User not found" }); // User not found
 });
-
-export default router;
