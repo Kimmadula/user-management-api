@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-// src/routes/user.ts
-
 import { Router } from "express";
 import { getRepository } from "typeorm";
 import { User } from "../entities/User";
@@ -27,6 +24,5 @@ router.post("/", async (req, res) => {
     res.status(500).json({ message: "Internal Server Error", error: error instanceof Error ? error.message : "Unknown error" });
   }
 });
-
 
 export default router;
